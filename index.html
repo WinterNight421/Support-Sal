@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support Sal Vulcano</title>
+  <style>
+    body { font-family: Georgia, serif; max-width: 640px; margin: 40px auto; padding: 0 16px; background: #f4f1ea; color: #222; }
+    h1 { font-size: 2.4rem; margin-bottom: 0; }
+    h2 { font-weight: normal; color: #555; margin-top: 4px; }
+    form { margin: 24px 0; }
+    input, button { font-size: 1rem; padding: 10px; }
+    button { cursor: pointer; }
+    #count { font-weight: bold; }
+    footer { margin-top: 40px; font-size: 0.85rem; color: #666; }
+  </style>
+</head>
+<body>
+  <h1>Sal Vulcano</h1>
+  <h2>Friend, Punching Bag & Professional Worst</h2>
+  <p>My friend Sal is annoyingly easy to scare. He knows the most random stuff, loses every challenge, and still cannot afford a weekend where nobody throws him off a boat. Please enter your name to support him.</p>
+  <form id="support">
+    <input id="name" type="text" placeholder="Your name" required>
+    <button type="submit">Support</button>
+  </form>
+  <p>Signups so far: <span id="count">0</span></p>
+  <footer>This is not a real website. It is a joke about a comedian. Sal Vulcano is not involved. No money is collected.</footer>
+  <script>
+    const key = "support-count";
+    const countEl = document.getElementById("count");
+    let n = Number(localStorage.getItem(key) || 18420);
+    countEl.textContent = n;
+    document.getElementById("support").addEventListener("submit", (e) => {
+      e.preventDefault();
+      n += 1;
+      localStorage.setItem(key, n);
+      countEl.textContent = n;
+      document.getElementById("name").value = "";
+      alert("Supported. He is still the worst.");
+    });
+  </script>
+</body>
+</html>
